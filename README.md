@@ -1,7 +1,10 @@
 Code generation tools
 =====
-Aims
 
+This is an app writen with ember to make our coding lives easier.
+
+Aims
+=====
 Generic
 Code incrementer > generates lines of code with incremental placeholder
 
