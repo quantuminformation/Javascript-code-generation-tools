@@ -1,5 +1,0 @@
-D:\Dropbox\programming\GitHub\ScaffoldProjects\dotNet\SinglePageSiteWithFoundation4\SinglePageSite\bin\SinglePageSite.dll
-D:\Dropbox\programming\GitHub\ScaffoldProjects\dotNet\SinglePageSiteWithFoundation4\SinglePageSite\bin\SinglePageSite.pdb
-D:\Dropbox\programming\GitHub\ScaffoldProjects\dotNet\SinglePageSiteWithFoundation4\SinglePageSite\obj\Debug\SinglePageSite.csprojResolveAssemblyReference.cache
-D:\Dropbox\programming\GitHub\ScaffoldProjects\dotNet\SinglePageSiteWithFoundation4\SinglePageSite\obj\Debug\SinglePageSite.dll
-D:\Dropbox\programming\GitHub\ScaffoldProjects\dotNet\SinglePageSiteWithFoundation4\SinglePageSite\obj\Debug\SinglePageSite.pdb

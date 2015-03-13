@@ -1,5 +1,0 @@
-D:\Dropbox\programming\GitHub\js2ts\SinglePageSite\bin\WebUI.dll
-D:\Dropbox\programming\GitHub\js2ts\SinglePageSite\bin\WebUI.pdb
-D:\Dropbox\programming\GitHub\js2ts\SinglePageSite\obj\Debug\WebUI.csprojResolveAssemblyReference.cache
-D:\Dropbox\programming\GitHub\js2ts\SinglePageSite\obj\Debug\WebUI.dll
-D:\Dropbox\programming\GitHub\js2ts\SinglePageSite\obj\Debug\WebUI.pdb
