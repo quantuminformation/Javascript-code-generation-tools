@@ -1,24 +1,19 @@
 {{outlet}}
-
-
 <div class="container">
-    <!-- Example row of columns -->
-    <div class="row" style="margin-top: 40px">
+    <div class="row mainCodeArea">
         <div class="col-md-6">
             <h2>Input JSON</h2>
-           {{input type="textarea" class="emberJson"}}
+          {{input type="textarea" class="emberJson" value=jsonApi placeholder='Paste JSON code here..'}} <br><br>
 
-            <p><a class="btn btn-default" href="#" role="button">Generate ember model »</a></p>
+            <button class="btn btn-default" {{action 'generateEmberModel'}} role="button">Generate ember model »
+            </button>
         </div>
         <div class="col-md-6">
             <h2>Output ember data model</h2>
-
+            <p>{{renderedScript}}</p>
         </div>
-
     </div>
-
     <hr>
-
     <footer>
         <p>© Company 2015</p>
     </footer>
