@@ -1,7 +1,14 @@
 # Javascript-code-generation-tools
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Helps do some of the repetitive stuff.
+
+Ember:
+*Generates ember data code from json.
+
+###Roadmap
+
+* Ember
+Generate data fragments model from Json.
 
 ## Prerequisites
 

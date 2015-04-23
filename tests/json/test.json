@@ -1,0 +1,14 @@
+{
+  "shouldBeNumber1": "1",
+  "shouldBeNumber2": "01",
+  "shouldBeNumber3": "101",
+  "shouldBeNumber3": "1.0",
+  "shouldBeString1": "bar",
+  "shouldBeString2": ".1",
+  "shouldBeString3": "..1",
+  "shouldBeString4": "1..1",
+  "shouldBeString5": "",
+  "shouldBeString6": "1.1.",
+  "shouldBeBoolean1": "false",
+  "shouldBeBoolean2": "true"
+}
