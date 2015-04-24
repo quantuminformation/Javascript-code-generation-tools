@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
 
       var indentation = '  ';//2 spaces
       //holds top level model
-      var emberDataModel = "import DS from 'ember-data';<br><br>" +
+      var DSModel = "import DS from 'ember-data';<br><br>" +
         "export default DS.Model.extend({<br>";
 
       var fragments = []; //holds fragments
@@ -21,11 +21,11 @@ export default Ember.Controller.extend({
       generatePart(model, false);
       // add model fragments
       fragments.forEach(item => {
-        emberDataModel += item;
+        DSModel += item;
       })
 
 
-      this.set("generatedCode", emberDataModel);
+      this.set("generatedCode", DSModel);
       //   this.set("generatedCode", 12412);
       // self.set("generatedCode", withReplacement);
       //  self.set("pendingGeneratedDomChangedScript", "") //clear
@@ -61,7 +61,7 @@ export default Ember.Controller.extend({
         part += '});<br><br>';
 
         if (!isForFragment) {
-          emberDataModel += part;
+          DSModel += part;
         } else {
           fragments.push(part);
         }
