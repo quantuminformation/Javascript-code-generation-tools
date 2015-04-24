@@ -5,10 +5,42 @@ Helps do some of the repetitive stuff.
 Ember:
 *Generates ember data code from json.
 
+Give it this:
+```js
+{
+  "shouldBeNumber1": "1",
+  "shouldBeString1": ".1",
+  "shouldBeBoolean1": "false",
+  "shouldBeFragment1": {
+    "FshouldBeNumber1": "1",
+    "FshouldBeString1": "bar",
+    "FshouldBeBoolean1": "false"
+  }
+}
+```
+
+Get this back (copy paste it into files):
+```js
+import DS from 'ember-data';
+
+export default DS.Model.extend({
+  shouldBeNumber1: DS.attr("number"),  
+  shouldBeString1: DS.attr("string"),   
+  shouldBeBoolean1: DS.attr("boolean"),  
+  shouldBeFragment1: DS.hasOneFragment("shouldBeFragment1")  
+});
+
+export default DS.ModelFragment.extend({
+  FshouldBeNumber1: DS.attr("number"),  
+  FshouldBeString1: DS.attr("string"),   
+  FshouldBeBoolean1: DS.attr("boolean")  
+});
+```
+
 ###Roadmap
 
 * Ember
-Generate data fragments model from Json.
+Generate more interesting stuff from json api
 
 ## Prerequisites
 
