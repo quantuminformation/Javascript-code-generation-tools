@@ -9,25 +9,27 @@ export default Ember.Controller.extend({
   }),
   actions: {
     generateEmberModel: function () {
-      // var withReplacement = this.get("generatedCode").replace(self.get("MUTATIONS_PLACEHOLDER"), self.get("pendingGeneratedDomChangedScript"));
 
-      var emberDataModel = "";
+      var indendation = ' ';//2 spaces
+      var emberDataModel = "import DS from 'ember-data';<br><br>" +
+        "export default DS.Model.extend({<br>";
       var model = JSON.parse(this.get("jsonApi"));
       for (var prop in model) {
         if (model.hasOwnProperty(prop)) {
           if (model[prop].match(/^\d+(\.\d+)?$/)) { //its a number
-            emberDataModel += prop + ': DS.attr("number"),  <br>';
+            emberDataModel += indendation + prop + ': DS.attr("number"),  <br>';
           }
           else if (model[prop] === 'true' || model[prop] === 'false') { //its a bool
-            emberDataModel += prop + ': DS.attr("boolean"),  <br>';
+            emberDataModel += indendation + prop + ': DS.attr("boolean"),  <br>';
           }
           else { //its a string
-            emberDataModel += prop + ': DS.attr("string"),   <br>';
+            emberDataModel += indendation + prop + ': DS.attr("string"),   <br>';
           }
         }
       }
       //remove last comma
-      emberDataModel = emberDataModel.replace(/(.*),/,'$1');
+      emberDataModel = emberDataModel.replace(/(.*),/, '$1');
+      emberDataModel += '});';
 
       this.set("generatedCode", emberDataModel);
       //   this.set("generatedCode", 12412);
