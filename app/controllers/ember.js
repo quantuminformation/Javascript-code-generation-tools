@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
+
 export default Ember.Controller.extend({
   jsonApi: "", //holds the text the users pastes in
   generatedText: "",
@@ -10,26 +11,20 @@ export default Ember.Controller.extend({
   actions: {
     generateEmberModel: function () {
 
-      var indendation = ' ';//2 spaces
+      var indentation = '  ';//2 spaces
+      //holds top level model
       var emberDataModel = "import DS from 'ember-data';<br><br>" +
         "export default DS.Model.extend({<br>";
+
+      var fragments = []; //holds fragments
+
       var model = JSON.parse(this.get("jsonApi"));
-      for (var prop in model) {
-        if (model.hasOwnProperty(prop)) {
-          if (model[prop].match(/^\d+(\.\d+)?$/)) { //its a number
-            emberDataModel += indendation + prop + ': DS.attr("number"),  <br>';
-          }
-          else if (model[prop] === 'true' || model[prop] === 'false') { //its a bool
-            emberDataModel += indendation + prop + ': DS.attr("boolean"),  <br>';
-          }
-          else { //its a string
-            emberDataModel += indendation + prop + ': DS.attr("string"),   <br>';
-          }
-        }
-      }
-      //remove last comma
-      emberDataModel = emberDataModel.replace(/(.*),/, '$1');
-      emberDataModel += '});';
+      generatePart(model, false);
+      // add model fragments
+      fragments.forEach(item => {
+        emberDataModel += item;
+      })
+
 
       this.set("generatedCode", emberDataModel);
       //   this.set("generatedCode", 12412);
@@ -37,6 +32,41 @@ export default Ember.Controller.extend({
       //  self.set("pendingGeneratedDomChangedScript", "") //clear
       //wrap in <pre> block to make code well formatted
       this.set("renderedCode", '<pre>' + this.get("generatedCode") + '</pre>');
+
+      /**
+       * this is used recursively to generated DS model code
+       * @param model
+       * @param isForFragment
+       */
+      function generatePart(model, isForFragment) {
+        var part = "";
+        for (var prop in model) {
+          if (model.hasOwnProperty(prop)) {
+            if (typeof (model[prop]) === 'object') { //send this off to a fragmemt
+              generatePart(model[prop], true);
+            }
+            else if (model[prop].match(/^\d+(\.\d+)?$/)) { //its a number
+              part += indentation + prop + ': DS.attr("number"),  <br>';
+            }
+            else if (model[prop] === 'true' || model[prop] === 'false') { //its a bool
+              part += indentation + prop + ': DS.attr("boolean"),  <br>';
+            }
+            else { //its a string
+              part += indentation + prop + ': DS.attr("string"),   <br>';
+            }
+          }
+
+          //remove last comma
+          part = part.replace(/(.*),/, '$1');
+          emberDataModel += '});';
+
+          if (!isForFragment) {
+            emberDataModel += part;
+          } else {
+            fragments.push(part);
+          }
+        }
+      }
     }
   }
 });

@@ -4,8 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'javascript-code-generation-tools',
     environment: environment,
-    baseURL: '/',
-    locationType: 'auto',
+    baseURL: 'javascript-code-generation-tools',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

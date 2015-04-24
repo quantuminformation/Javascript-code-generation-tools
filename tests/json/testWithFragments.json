@@ -1,0 +1,8 @@
+{
+
+  "shouldBeFragment1": {
+    "shouldBeNumber1": "1",
+    "shouldBeString1": "bar",
+    "shouldBeBoolean1": "false"
+  }
+}
