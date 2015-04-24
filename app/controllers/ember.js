@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
   generatedText: "",
   renderedCode: "", //final text rendered from generatedText,
   onrenderedCodeChange: Ember.observer('renderedCode', function () {
-    $("#renderedCode").html(this.get("renderedCode"));
+    Ember.$("#renderedCode").html(this.get("renderedCode"));
   }),
   actions: {
     generateEmberModel: function () {
@@ -17,7 +17,6 @@ export default Ember.Controller.extend({
         "export default DS.Model.extend({<br>";
 
       var fragments = []; //holds fragments
-
       var model = JSON.parse(this.get("jsonApi"));
       generatePart(model, false);
       // add model fragments
@@ -39,11 +38,12 @@ export default Ember.Controller.extend({
        * @param isForFragment
        */
       function generatePart(model, isForFragment) {
-        var part = "";
+        var part = isForFragment ? "export default DS.ModelFragment.extend({<br>" : "";
         for (var prop in model) {
           if (model.hasOwnProperty(prop)) {
-            if (typeof (model[prop]) === 'object') { //send this off to a fragmemt
-              generatePart(model[prop], true);
+            if (typeof (model[prop]) === 'object') { //send this off to a fragment
+              generatePart(model[prop], true); //this will generate code that would  go in a seperate model fragment code
+              part += indentation + prop + ': DS.hasOneFragment("' + prop + '"),  <br>';
             }
             else if (model[prop].match(/^\d+(\.\d+)?$/)) { //its a number
               part += indentation + prop + ': DS.attr("number"),  <br>';
@@ -55,16 +55,15 @@ export default Ember.Controller.extend({
               part += indentation + prop + ': DS.attr("string"),   <br>';
             }
           }
+        }
+        //remove last comma
+        part = part.replace(/(.*),/, '$1');
+        part += '});<br><br>';
 
-          //remove last comma
-          part = part.replace(/(.*),/, '$1');
-          emberDataModel += '});';
-
-          if (!isForFragment) {
-            emberDataModel += part;
-          } else {
-            fragments.push(part);
-          }
+        if (!isForFragment) {
+          emberDataModel += part;
+        } else {
+          fragments.push(part);
         }
       }
     }

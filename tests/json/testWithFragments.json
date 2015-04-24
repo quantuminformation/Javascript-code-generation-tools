@@ -1,8 +1,10 @@
 {
-
+  "shouldBeNumber1": "1",
+  "shouldBeString1": ".1",
+  "shouldBeBoolean1": "false",
   "shouldBeFragment1": {
-    "shouldBeNumber1": "1",
-    "shouldBeString1": "bar",
-    "shouldBeBoolean1": "false"
+    "FshouldBeNumber1": "1",
+    "FshouldBeString1": "bar",
+    "FshouldBeBoolean1": "false"
   }
 }
