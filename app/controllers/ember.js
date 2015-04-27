@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
       this.set("renderedCode", '<pre>' + this.get("generatedCode") + '</pre>');
 
       /**
-       * this is used recursively to generated DS model code
+       * this is used recursively to generate Ember data models code
        * @param model
        * @param isForFragment
        */
