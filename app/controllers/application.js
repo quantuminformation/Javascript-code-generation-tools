@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
       this.transitionToRoute("");
     },
     goToRouteEmber: function () {
-      this.transitionToRoute("ember");
+      this.transitionToRoute("json");
     }
   }
 });

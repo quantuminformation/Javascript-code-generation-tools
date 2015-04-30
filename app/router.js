@@ -6,7 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('ember');
+  this.route('json');
 });
 
 export default Router;

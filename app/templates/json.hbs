@@ -1,0 +1,25 @@
+{{outlet}}
+<div class="container">
+    <div class="row mainCodeArea">
+        <div class="col-md-6">
+            <h2>Input JSON</h2>
+          {{input type="textarea" class="emberJson" value=jsonApi placeholder='Paste JSON code here..' }} <br><br>
+
+            <button class="btn btn-default" {{action 'generateCode' "EMBER_DATA"}} role="button">Generate ember data model »
+            </button>
+            <button class="btn btn-default" {{action 'generateCode' "TYPESCRIPT"}} role="button">Generate TypeScript model »
+            </button>
+       <!--     <button class="btn btn-default" {{action 'generateCode' "ES6"}} role="button">Generate ES6 model »
+            </button>-->
+        </div>
+        <div class="col-md-6">
+            <h2>Output ember data model</h2>
+            <p id="renderedCode"></p>
+
+        </div>
+    </div>
+    <hr>
+    <footer>
+        <p>© Company 2015</p>
+    </footer>
+</div>

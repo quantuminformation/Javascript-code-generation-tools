@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 npm uninstall -g ember-cli
 npm cache clean
 bower cache clean
