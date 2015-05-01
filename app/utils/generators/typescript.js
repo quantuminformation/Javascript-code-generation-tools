@@ -17,14 +17,14 @@ var TypeScriptGenerator = {
     var part = isForChild ? "export class " + classname + ' {<br>' : "";
     //used to stub out the constructor
     var constructorPartParm1 = "object";//used in the constructor
-    var constructorPart = Common.indentation + 'constructor (' + constructorPartParm1 + ')<br> ';
+    var constructorPart = Common.indentation + 'constructor (' + constructorPartParm1 + ') {<br>';
 
     for (var prop in model) {
       if (model.hasOwnProperty(prop)) {
         if (typeof (model[prop]) === 'object') { //send this off to a fragment
-          this.generatePart(model[prop], true, prop); //this will generate code that would  go in a seperate typescript class
+          this.generatePart(model[prop], true, prop); //this will generate code that would  go in a separate typescript class
           part += Common.indentation + prop + ': ' + prop + ';  <br>';
-          constructorPart += Common.indentationX2 + 'this.' + prop + ' = new ' +
+          constructorPart += Common.indentation + 'this.' + prop + ' = new ' +
             prop + '(' + constructorPartParm1 + '.' + prop + ')' + '; <br>';
         }
         else if (model[prop].match(/^\d+(\.\d+)?$/)) { //its a number
@@ -42,6 +42,8 @@ var TypeScriptGenerator = {
         }
       }
     }
+
+    constructorPart += Common.indentation + '} <br>';
     //remove last comma
     part = part.replace(/(.*),/, '$1');
     part += constructorPart + '}<br>';
