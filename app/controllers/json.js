@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
   }),
   actions: {
     /**
-     * @param type passed from the json tempate, which then is used to pick the renderer
+     * @param type passed from the json template, which then is used to pick the renderer
      */
     generateCode: function (type) {
       var model = JSON.parse(this.get("jsonApi"));

@@ -6,35 +6,45 @@ var TypeScriptGenerator = {
 
 
   //contants
-  CLASS_START: "class Foo {<br><br>" +
-  Common.indentation + "contructor() {<br>",
+  CLASS_START: "export class Foo {<br>", //+
+  // Common.indentation + "contructor() {<br>",
   /**
-   * this is used recursively to generate the ember data model
+   * this is used recursively to generate the typescript code
    * @param model
    * @param isForChild
    */
-  generatePart: function (model, isForChild) {
-    var part = isForChild ? this.CLASS_START : "";
+  generatePart: function (model, isForChild, classname = "Foo") {
+    var part = isForChild ? "export class " + classname + ' {<br>' : "";
+    //used to stub out the constructor
+    var constructorPartParm1 = "object";//used in the constructor
+    var constructorPart = Common.indentation + 'constructor (' + constructorPartParm1 + ')<br> ';
+
     for (var prop in model) {
       if (model.hasOwnProperty(prop)) {
         if (typeof (model[prop]) === 'object') { //send this off to a fragment
-          this.generatePart(model[prop], true); //this will generate code that would  go in a seperate typescript class
-          part += Common.indentationX2 + prop + ': ' + prop + ',  <br>';
+          this.generatePart(model[prop], true, prop); //this will generate code that would  go in a seperate typescript class
+          part += Common.indentation + prop + ': ' + prop + ';  <br>';
+          constructorPart += Common.indentationX2 + 'this.' + prop + ' = new ' +
+            prop + '(' + constructorPartParm1 + '.' + prop + ')' + '; <br>';
         }
         else if (model[prop].match(/^\d+(\.\d+)?$/)) { //its a number
-          part += Common.indentationX2 + prop + ': Number,  <br>';
+          part += Common.indentation + prop + ': Number;  <br>';
+          constructorPart += Common.indentationX2 + 'this.' + prop + ' = ' + constructorPartParm1 + '.' + prop + '; <br>';
+
         }
         else if (model[prop] === 'true' || model[prop] === 'false') { //its a bool
-          part += Common.indentationX2 + prop + ': Boolean,  <br>';
+          part += Common.indentation + prop + ': Boolean;  <br>';
+          constructorPart += Common.indentationX2 + 'this.' + prop + ' = ' + constructorPartParm1 + '.' + prop + '; <br>';
         }
         else { //its a string
-          part += Common.indentationX2 + prop + ': String,   <br>';
+          part += Common.indentation + prop + ': String;   <br>';
+          constructorPart += Common.indentationX2 + 'this.' + prop + ' = ' + constructorPartParm1 + '.' + prop + '; <br>';
         }
       }
     }
     //remove last comma
     part = part.replace(/(.*),/, '$1');
-    part += Common.indentation + '}<br>}<br>';
+    part += constructorPart + '}<br>';
 
     if (!isForChild) {
       this.outputCode += part;

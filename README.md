@@ -42,6 +42,19 @@ export default DS.ModelFragment.extend({
 ```
 #### Typescript
 ```js
+export class Foo {
+  shouldBeNumber1: Number,  
+  shouldBeString1: String,   
+  shouldBeBoolean1: Boolean,  
+  shouldBeFragment1: shouldBeFragment1  
+  }
+}
+export class shouldBeFragment1 {
+  FshouldBeNumber1: Number,  
+  FshouldBeString1: String,   
+  FshouldBeBoolean1: Boolean  
+  }
+}
 ```
 #### ES6
 ```js
