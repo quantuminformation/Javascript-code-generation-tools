@@ -1,5 +1,7 @@
 var Common = {
+  //todo investigate whether to use a proper code tree generator
   indentation: '  '
-};
-export default  Common;
+}
+Common.indentationX2 = Common.indentation + Common.indentation;
 
+export default Common;

@@ -2,8 +2,11 @@
 
 Helps do some of the repetitive stuff.
 
-Ember:
+JSON:
 *Generates ember data code from json.
+*Generates ES6 classes code from json.
+*Generates Typescript classes code from json.
+*Generates Bootstrap 3 Form HTML code from json.
 
 Give it this:
 ```js
@@ -20,6 +23,7 @@ Give it this:
 ```
 
 Get this back (copy paste it into files):
+####Ember data
 ```js
 import DS from 'ember-data';
 
@@ -36,11 +40,21 @@ export default DS.ModelFragment.extend({
   FshouldBeBoolean1: DS.attr("boolean")  
 });
 ```
-
+#### Typescript
+```js
+```
+#### ES6
+```js
+```
+#### Bootstrap 3 Forms
+```html
+```
 ###Roadmap
 
-* Ember
+*JSON
 Generate more interesting stuff from json api
+*Forms
+Generate application specific stuff of ngModel and ember inputs
 
 ## Prerequisites
 

@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import EmberDataGenerator from '../utils/generators/emberData';
+import TypeScriptGenerator from '../utils/generators/typescript';
+//import ES6Generator from '../utils/generators/typescript';
 
 export default Ember.Controller.extend({
   jsonApi: "", //holds the text the users pastes in
@@ -23,12 +25,18 @@ export default Ember.Controller.extend({
         }
         case "ES6":
         {
-          code = EmberDataGenerator.generate(model, false);
+        //
+        //  code = ES6Generator.generate(model, false);
           break;
         }
         case "TYPESCRIPT":
         {
-          code = EmberDataGenerator.generate(model, false);
+          code = TypeScriptGenerator.generate(model, false);
+          break;
+        }
+        case "BOOTSTRAP-3":
+        {
+          code = TypeScriptGenerator.generate(model, false);
           break;
         }
         default:

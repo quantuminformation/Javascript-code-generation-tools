@@ -6,11 +6,10 @@ var EmberDataGenerator = {
   /**
    * this is used recursively to generate the ember data model
    * @param model
-   * @param isForFragment
-   * @param renderer this is what generates the code for the specific output language/framework
+   * @param isForChild
    */
-  generatePart: function (model, isForFragment, renderer) {
-    var part = isForFragment ? "export default DS.ModelFragment.extend({<br>" : "";
+  generatePart: function (model, isForChild) {
+    var part = isForChild ? "export default DS.ModelFragment.extend({<br>" : "";
     for (var prop in model) {
       if (model.hasOwnProperty(prop)) {
         if (typeof (model[prop]) === 'object') { //send this off to a fragment
@@ -32,7 +31,7 @@ var EmberDataGenerator = {
     part = part.replace(/(.*),/, '$1');
     part += '});<br><br>';
 
-    if (!isForFragment) {
+    if (!isForChild) {
       this.outputCode += part;
     } else {
       this.children.push(part);
