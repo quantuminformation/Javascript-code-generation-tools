@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import Common from '../../utils/generators/common';
-var TypeScriptGenerator = {
+var ES6Generator = {
   children: [], //holds fragments
   outputCode: "",//holds the output code
 
@@ -23,21 +23,16 @@ var TypeScriptGenerator = {
       if (model.hasOwnProperty(prop)) {
         if (typeof (model[prop]) === 'object') { //send this off to a fragment
           this.generatePart(model[prop], true, prop); //this will generate code that would  go in a separate typescript class
-          part += Common.indentation + prop + ': ' + prop + ';  <br>';
-          constructorPart += Common.indentation + 'this.' + prop + ' = new ' +
+          constructorPart += Common.indentationX2 + 'this.' + prop + ' = new ' +
             prop + '(' + constructorPartParm1 + '.' + prop + ')' + '; <br>';
         }
         else if (model[prop].match(/^\d+(\.\d+)?$/)) { //its a number
-          part += Common.indentation + prop + ': Number;  <br>';
           constructorPart += Common.indentationX2 + 'this.' + prop + ' = ' + constructorPartParm1 + '.' + prop + '; <br>';
-
         }
         else if (model[prop] === 'true' || model[prop] === 'false') { //its a bool
-          part += Common.indentation + prop + ': Boolean;  <br>';
           constructorPart += Common.indentationX2 + 'this.' + prop + ' = ' + constructorPartParm1 + '.' + prop + '; <br>';
         }
         else { //its a string
-          part += Common.indentation + prop + ': String;   <br>';
           constructorPart += Common.indentationX2 + 'this.' + prop + ' = ' + constructorPartParm1 + '.' + prop + '; <br>';
         }
       }
@@ -45,7 +40,6 @@ var TypeScriptGenerator = {
 
     constructorPart += Common.indentation + '} <br>';
     //remove last comma
-    part = part.replace(/(.*),/, '$1');
     part += constructorPart + '}<br>';
 
     if (!isForChild) {
@@ -56,8 +50,9 @@ var TypeScriptGenerator = {
   },
 
   generate: function (model) {
-    //holds top level model
+    //reset the state
     this.outputCode = this.CLASS_START;
+    this.children = [];
 
     this.generatePart(model, false);
     // add model fragments
@@ -68,4 +63,4 @@ var TypeScriptGenerator = {
   }
 };
 
-export default TypeScriptGenerator;
+export default ES6Generator;

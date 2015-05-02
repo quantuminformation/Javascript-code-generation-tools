@@ -24,7 +24,7 @@ var TypeScriptGenerator = {
         if (typeof (model[prop]) === 'object') { //send this off to a fragment
           this.generatePart(model[prop], true, prop); //this will generate code that would  go in a separate typescript class
           part += Common.indentation + prop + ': ' + prop + ';  <br>';
-          constructorPart += Common.indentation + 'this.' + prop + ' = new ' +
+          constructorPart += Common.indentationX2 + 'this.' + prop + ' = new ' +
             prop + '(' + constructorPartParm1 + '.' + prop + ')' + '; <br>';
         }
         else if (model[prop].match(/^\d+(\.\d+)?$/)) { //its a number
@@ -56,8 +56,9 @@ var TypeScriptGenerator = {
   },
 
   generate: function (model) {
-    //holds top level model
+    //reset the state
     this.outputCode = this.CLASS_START;
+    this.children = [];
 
     this.generatePart(model, false);
     // add model fragments

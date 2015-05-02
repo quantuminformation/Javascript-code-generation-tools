@@ -39,9 +39,10 @@ var EmberDataGenerator = {
   },
 
   generate: function (model) {
-    //holds top level model
+    //reset the state
     this.outputCode = "import DS from 'ember-data';<br><br>" +
       "export default DS.Model.extend({<br>";
+    this.children = [];
 
     this.generatePart(model, false);
     // add model fragments

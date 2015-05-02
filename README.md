@@ -43,24 +43,77 @@ export default DS.ModelFragment.extend({
 #### Typescript
 ```js
 export class Foo {
-  shouldBeNumber1: Number,  
-  shouldBeString1: String,   
-  shouldBeBoolean1: Boolean,  
-  shouldBeFragment1: shouldBeFragment1  
-  }
+  shouldBeNumber1: Number;  
+  shouldBeString1: String;   
+  shouldBeBoolean1: Boolean;  
+  shouldBeFragment1: shouldBeFragment1;  
+  constructor (object) {
+    this.shouldBeNumber1 = object.shouldBeNumber1; 
+    this.shouldBeString1 = object.shouldBeString1; 
+    this.shouldBeBoolean1 = object.shouldBeBoolean1; 
+    this.shouldBeFragment1 = new shouldBeFragment1(object.shouldBeFragment1); 
+  } 
 }
 export class shouldBeFragment1 {
-  FshouldBeNumber1: Number,  
-  FshouldBeString1: String,   
-  FshouldBeBoolean1: Boolean  
-  }
+  FshouldBeNumber1: Number;  
+  FshouldBeString1: String;   
+  FshouldBeBoolean1: Boolean;  
+  constructor (object) {
+    this.FshouldBeNumber1 = object.FshouldBeNumber1; 
+    this.FshouldBeString1 = object.FshouldBeString1; 
+    this.FshouldBeBoolean1 = object.FshouldBeBoolean1; 
+  } 
 }
 ```
 #### ES6
 ```js
+export class Foo {
+  constructor (object) {
+    this.shouldBeNumber1 = object.shouldBeNumber1; 
+    this.shouldBeString1 = object.shouldBeString1; 
+    this.shouldBeBoolean1 = object.shouldBeBoolean1; 
+    this.shouldBeFragment1 = new shouldBeFragment1(object.shouldBeFragment1); 
+  } 
+}
+export class shouldBeFragment1 {
+  constructor (object) {
+    this.FshouldBeNumber1 = object.FshouldBeNumber1; 
+    this.FshouldBeString1 = object.FshouldBeString1; 
+    this.FshouldBeBoolean1 = object.FshouldBeBoolean1; 
+  } 
+}
 ```
 #### Bootstrap 3 Forms
 ```html
+export class Foo {
+<form>
+  <div class="form-group">
+    <label for="shouldBeNumber1">shouldBeNumber1:</label>
+    <input type="number" class="form-control" id="shouldBeNumber1">
+  </div>
+  <div class="form-group">
+    <label for="shouldBeString1">shouldBeString1:</label>
+    <input class="form-control" id="shouldBeString1">
+  </div>
+  <div class="form-group">
+    <label for="shouldBeBoolean1">shouldBeBoolean1:</label>
+    <input type="checkbox" class="form-control" id="shouldBeBoolean1">
+  </div>
+</form>
+<form>
+  <div class="form-group">
+    <label for="FshouldBeNumber1">FshouldBeNumber1:</label>
+    <input type="number" class="form-control" id="FshouldBeNumber1">
+  </div>
+  <div class="form-group">
+    <label for="FshouldBeString1">FshouldBeString1:</label>
+    <input class="form-control" id="FshouldBeString1">
+  </div>
+  <div class="form-group">
+    <label for="FshouldBeBoolean1">FshouldBeBoolean1:</label>
+    <input type="checkbox" class="form-control" id="FshouldBeBoolean1">
+  </div>
+</form>
 ```
 ###Roadmap
 

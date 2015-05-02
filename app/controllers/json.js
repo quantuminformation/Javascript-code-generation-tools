@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import EmberDataGenerator from '../utils/generators/emberData';
 import TypeScriptGenerator from '../utils/generators/typescript';
-//import ES6Generator from '../utils/generators/typescript';
+import ES6Generator from '../utils/generators/ES6';
+import BootstrapGenerator from '../utils/generators/bootstrap';
 
 export default Ember.Controller.extend({
   jsonApi: "", //holds the text the users pastes in
@@ -25,8 +26,7 @@ export default Ember.Controller.extend({
         }
         case "ES6":
         {
-        //
-        //  code = ES6Generator.generate(model, false);
+          code = ES6Generator.generate(model, false);
           break;
         }
         case "TYPESCRIPT":
@@ -36,18 +36,14 @@ export default Ember.Controller.extend({
         }
         case "BOOTSTRAP-3":
         {
-          code = TypeScriptGenerator.generate(model, false);
+          code = BootstrapGenerator.generate(model, false);
           break;
         }
         default:
           throw("bad type");
       }
 
-
       this.set("generatedCode", code);
-      //   this.set("generatedCode", 12412);
-      // self.set("generatedCode", withReplacement);
-      //  self.set("pendingGeneratedDomChangedScript", "") //clear
       //wrap in <pre> block to make code well formatted
       this.set("renderedCode", '<pre>' + this.get("generatedCode") + '</pre>');
 
