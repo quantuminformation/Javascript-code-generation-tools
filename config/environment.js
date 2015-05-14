@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'javascript-code-generation-tools',
     environment: environment,
-    baseURL: 'javascript-code-generation-tools',
+    baseURL: '',
     locationType: 'hash',
     EmberENV: {
       FEATURES: {
