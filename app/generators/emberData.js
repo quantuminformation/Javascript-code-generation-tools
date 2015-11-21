@@ -1,3 +1,4 @@
+//todo have some sort of base class for generators
 import Common from './common';
 var EmberDataGenerator = {
   children: [], //holds fragments

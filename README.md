@@ -1,6 +1,6 @@
 # Javascript-code-generation-tools
 
-Helps do some of the repetitive stuff.
+Helps do some of the repetitive stuff. Built with React
 
 JSON:
 *Generates ember data code from json.
