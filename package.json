@@ -1,6 +1,6 @@
 {
   "name": "javascript-code-generation-tools",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Generates code from json",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
     "babel-loader": "^6.0.1",
     "babel-preset-es2015": "^6.1.2",
     "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-0": "^6.1.18",
     "css-loader": "^0.23.0",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",

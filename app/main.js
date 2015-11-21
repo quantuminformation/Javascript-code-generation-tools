@@ -1,10 +1,11 @@
 import React               from 'react';
 import ReactDOM            from 'react-dom';
+import Radium              from 'radium';
+
 import EmberDataGenerator  from './generators/emberData.js';
 import TypeScriptGenerator from './generators/typescript';
 import ES6Generator        from './generators/ES6';
 import BootstrapGenerator  from './generators/bootstrap';
-
 
 var App = React.createClass({
   getInitialState: function () {
@@ -12,6 +13,10 @@ var App = React.createClass({
       jsonApi: "",
       outputCode: ""
     };
+  },
+
+  rawMarkup: function () {
+    return {__html: this.state.outputCode};
   },
 
   /**
@@ -24,8 +29,12 @@ var App = React.createClass({
       alert("We can't parse an empty string");
       return; // we can't parse an empty string
     }
-
-    var model = JSON.parse(element.value);
+    try {
+      var model = JSON.parse(element.value);
+    }
+    catch (e) {
+      alert(e.message);
+    }
     var code = "";
     switch (event.target.dataset.type) {
       case "EMBER_DATA":
@@ -53,7 +62,7 @@ var App = React.createClass({
     }
 
     this.setState({
-      outputCode: '<pre>' + code + '</pre>'
+      outputCode: code
     })
   },
 
@@ -79,7 +88,7 @@ var App = React.createClass({
           </div>
           <div className="flex1">
             <h2>Output code</h2>
-            <p id="renderedCode">{this.state.outputCode}</p>
+            <p id="renderedCode" dangerouslySetInnerHTML={this.rawMarkup()}></p>
           </div>
         </div>
 
@@ -92,3 +101,23 @@ ReactDOM.render(
   <App />,
   document.getElementById('container')
 );
+
+var styles = {
+  base: {
+    color: '#fff',
+
+    // Adding interactive state couldn't be easier! Add a special key to your
+    // style object (:hover, :focus, :active, or @media) with the additional rules.
+    ':hover': {
+      background: color('#0074d9').lighten(0.2).hexString()
+    }
+  },
+
+  primary: {
+    background: '#0074D9'
+  },
+
+  warning: {
+    background: '#FF4136'
+  }
+};
