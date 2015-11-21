@@ -1,5 +1,4 @@
-import Ember from 'ember';
-import Common from '../../utils/generators/common';
+import Common from './common';
 var BootstrapGenerator = {
   children: [], //holds fragments
   outputCode: "",//holds the output code

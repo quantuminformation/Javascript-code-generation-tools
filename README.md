@@ -25,7 +25,7 @@ Give it this:
 Get this back (copy paste it into files):
 ####Ember data
 ```js
-import DS from 'ember-data';
+  import DS from 'ember-data';
 
 export default DS.Model.extend({
   shouldBeNumber1: DS.attr("number"),  
