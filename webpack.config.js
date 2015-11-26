@@ -4,7 +4,6 @@ var webpack = require('webpack');
 module.exports = {
   entry: [
     'babel-polyfill',
-    './app/less/main.less',
     './app/main.js',
     'webpack-dev-server/client?http://localhost:8080'
   ],
@@ -23,10 +22,6 @@ module.exports = {
         query: {
           presets: ['react', 'es2015','stage-0']
         }
-      },
-      {
-        test: /\.less$/,
-        loader: "style!css!autoprefixer!less"
       }
     ]
   }
