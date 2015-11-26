@@ -1,12 +1,14 @@
+//npm
 import React               from 'react';
 import ReactDOM            from 'react-dom';
 import Radium              from 'radium';
 
+//local
 import EmberDataGenerator  from './generators/emberData.js';
 import TypeScriptGenerator from './generators/typescript';
 import ES6Generator        from './generators/ES6';
 import BootstrapGenerator  from './generators/bootstrap';
-import styles  from './styles/main';
+import styles              from './styles/main';
 
 var App = React.createClass({
   getInitialState: function () {

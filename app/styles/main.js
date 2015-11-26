@@ -1,4 +1,4 @@
-var styles = {
+export default  {
   /*  base: {
    color: '#fff',
 
