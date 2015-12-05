@@ -1,11 +1,14 @@
+//npm
 import React               from 'react';
 import ReactDOM            from 'react-dom';
 import Radium              from 'radium';
 
+//local
 import EmberDataGenerator  from './generators/emberData.js';
 import TypeScriptGenerator from './generators/typescript';
 import ES6Generator        from './generators/ES6';
 import BootstrapGenerator  from './generators/bootstrap';
+import styles              from './styles/main';
 
 var App = React.createClass({
   getInitialState: function () {
@@ -24,49 +27,37 @@ var App = React.createClass({
    */
   generateCode: function (event) {
 
-    var element = document.getElementById("inputJSON");
-    if (!element.value) {
+    const {jsonApi} = this.state;
+
+    if (!jsonApi) {
       alert("We can't parse an empty string");
-      return; // we can't parse an empty string
+      return;
     }
     try {
-      var model = JSON.parse(element.value);
+      var model = JSON.parse(jsonApi);
     }
     catch (e) {
       alert(e.message);
     }
-    var code = "";
-    switch (event.target.dataset.type) {
-      case "EMBER_DATA":
-      {
-        code = EmberDataGenerator.generate(model);
-        break;
-      }
-      case "ES6":
-      {
-        code = ES6Generator.generate(model);
-        break;
-      }
-      case "TYPESCRIPT":
-      {
-        code = TypeScriptGenerator.generate(model);
-        break;
-      }
-      case "BOOTSTRAP-3":
-      {
-        code = BootstrapGenerator.generate(model);
-        break;
-      }
-      default:
-        throw("bad type");
+    const generators = {
+      EMBER_DATA: EmberDataGenerator,
+      ES6: ES6Generator,
+      TYPESCRIPT: TypeScriptGenerator,
+      BOOTSTRAP3: BootstrapGenerator
     }
 
     this.setState({
-      outputCode: code
+      outputCode: '<pre>' + generators[event.target.dataset.type].generate(model) + '</pre>' // assign output to result of generation
     })
   },
 
   render: function () {
+
+    const {jsonApi} = this.state;
+    const setJSON = event => {
+      this.setState({jsonApi: event.target.value});
+    }
+
 
     return (
       <div>
@@ -78,15 +69,16 @@ var App = React.createClass({
         </button>
         <button onClick={this.generateCode} data-type="ES6">ES6
         </button>
-        <button onClick={this.generateCode} data-type="BOOTSTRAP-3">BOOTSTRAP-3
+        <button onClick={this.generateCode} data-type="BOOTSTRAP3">BOOTSTRAP3 Form
         </button>
-        <div id="codeDisplays">
-          <div className="flex1">
+        <div style={styles.displayFlex}>
+          <div style={styles.flex1}>
             <h2>Input JSON</h2>
-            <input id="inputJSON" type="textarea" className="emberJson" placeholder='Paste JSON code here..'/>
+            <input id="inputJSON" type="textarea" style={styles.input} onChange={setJSON} value={jsonApi}
+                   placeholder='Paste JSON code here..'/>
             <br/><br/>
           </div>
-          <div className="flex1">
+          <div style={styles.flex1}>
             <h2>Output code</h2>
             <p id="renderedCode" dangerouslySetInnerHTML={this.rawMarkup()}></p>
           </div>
@@ -102,22 +94,4 @@ ReactDOM.render(
   document.getElementById('container')
 );
 
-var styles = {
-  base: {
-    color: '#fff',
 
-    // Adding interactive state couldn't be easier! Add a special key to your
-    // style object (:hover, :focus, :active, or @media) with the additional rules.
-    ':hover': {
-      background: color('#0074d9').lighten(0.2).hexString()
-    }
-  },
-
-  primary: {
-    background: '#0074D9'
-  },
-
-  warning: {
-    background: '#FF4136'
-  }
-};

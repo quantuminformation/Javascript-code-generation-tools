@@ -2,6 +2,8 @@
 
 Helps do some of the repetitive stuff. Built with React
 
+[Demo](http://quantuminformation.github.io/Javascript-code-generation-tools/) 
+
 JSON:
 * Generates ember data code from json.
 * Generates ES6 classes code from json.
