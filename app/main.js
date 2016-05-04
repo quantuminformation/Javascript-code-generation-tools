@@ -1,14 +1,9 @@
-//npm
-import React               from 'react';
-import ReactDOM            from 'react-dom';
-import Radium              from 'radium';
-
-//local
-import EmberDataGenerator  from './generators/emberData.js';
-import TypeScriptGenerator from './generators/typescript';
-import ES6Generator        from './generators/ES6';
-import BootstrapGenerator  from './generators/bootstrap';
-import styles              from './styles/main';
+import React from "react"
+import ReactDOM from "react-dom"
+import EmberDataGenerator from "./generators/emberData.js"
+import TypeScriptGenerator from "./generators/typescript"
+import ES6Generator from "./generators/ES6"
+import BootstrapGenerator from "./generators/bootstrap"
 
 var App = React.createClass({
   getInitialState: function () {
@@ -58,7 +53,6 @@ var App = React.createClass({
       this.setState({jsonApi: event.target.value});
     }
 
-
     return (
       <div>
         <h2>Generators</h2>
@@ -71,14 +65,14 @@ var App = React.createClass({
         </button>
         <button onClick={this.generateCode} data-type="BOOTSTRAP3">BOOTSTRAP3 Form
         </button>
-        <div style={styles.displayFlex}>
-          <div style={styles.flex1}>
+        <div className="flex">
+          <div className="flex1 padding1em">
             <h2>Input JSON</h2>
-            <input id="inputJSON" type="textarea" style={styles.input} onChange={setJSON} value={jsonApi}
-                   placeholder='Paste JSON code here..'/>
+            <textarea id="codeInput" type="textarea" onChange={setJSON}
+                      placeholder='Paste JSON code here..'  ></textarea>
             <br/><br/>
           </div>
-          <div style={styles.flex1}>
+          <div className="flex1 padding1em">
             <h2>Output code</h2>
             <p id="renderedCode" dangerouslySetInnerHTML={this.rawMarkup()}></p>
           </div>

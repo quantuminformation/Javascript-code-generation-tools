@@ -1,0 +1,41 @@
+:root {
+  --codeEditorHeight: 500px;
+}
+
+body {
+  background-color: #f2f2f2;
+  padding: 1em;
+}
+
+input, textarea {
+  width: 100%
+}
+
+.flex {
+  display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.padding1em {
+  padding: 1em;
+}
+
+#renderedCode {
+/*  backgroundColor: #000;
+  color: #fff;*/
+  height: var(--codeEditorHeight);
+  border: 1px solid;
+  overflow: scroll;
+
+}
+
+#codeInput {
+  flex: 1;
+  height: var(--codeEditorHeight);
+  width: 100%;
+}
+
+
