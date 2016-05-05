@@ -1,56 +1,27 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import EmberDataGenerator from "./generators/emberData.js"
-import TypeScriptGenerator from "./generators/typescript"
-import ES6Generator from "./generators/ES6"
-import BootstrapGenerator from "./generators/bootstrap"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Redux from 'redux';
+import mainReducer from './reducers/mainReducer';
+import actionTypes from './actions/actionTypes';
+
+
+const {createStore}= Redux;
+const store = createStore(mainReducer);
+console.log(store.getState());
 
 var App = React.createClass({
-  getInitialState: function () {
-    return {
-      jsonApi: "",
-      outputCode: ""
-    };
-  },
 
   rawMarkup: function () {
-    return {__html: this.state.outputCode};
-  },
-
-  /**
-   * @param event passed from the json template, which then is used to pick the renderer then set to the output code
-   */
-  generateCode: function (event) {
-
-    const {jsonApi} = this.state;
-
-    if (!jsonApi) {
-      alert("We can't parse an empty string");
-      return;
-    }
-    try {
-      var model = JSON.parse(jsonApi);
-    }
-    catch (e) {
-      alert(e.message);
-    }
-    const generators = {
-      EMBER_DATA: EmberDataGenerator,
-      ES6: ES6Generator,
-      TYPESCRIPT: TypeScriptGenerator,
-      BOOTSTRAP3: BootstrapGenerator
-    }
-
-    this.setState({
-      outputCode: '<pre>' + generators[event.target.dataset.type].generate(model) + '</pre>' // assign output to result of generation
-    })
+    return {__html: store.outputCode};
   },
 
   render: function () {
 
-    const {jsonApi} = this.state;
     const setJSON = event => {
-      this.setState({jsonApi: event.target.value});
+      store.dispatch({
+        type: actionTypes.GENERATE_SOURCE,
+        json: event.target.value
+      })
     }
 
     return (
@@ -69,7 +40,7 @@ var App = React.createClass({
           <div className="flex1 padding1em">
             <h2>Input JSON</h2>
             <textarea id="codeInput" type="textarea" onChange={setJSON}
-                      placeholder='Paste JSON code here..'  ></textarea>
+                      placeholder='Paste JSON code here..'></textarea>
             <br/><br/>
           </div>
           <div className="flex1 padding1em">
@@ -77,7 +48,6 @@ var App = React.createClass({
             <p id="renderedCode" dangerouslySetInnerHTML={this.rawMarkup()}></p>
           </div>
         </div>
-
       </div>
     );
   }

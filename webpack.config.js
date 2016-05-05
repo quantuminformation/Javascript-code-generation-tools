@@ -1,18 +1,18 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: [
     'babel-polyfill',
     './app/main.js',
-    'webpack-dev-server/client?http://localhost:8080'
+    'webpack-dev-server/client?http://localhost:8080',
   ],
   output: {
     publicPath: '/',
-    filename: 'dist/main.js'
+    filename: 'dist/main.js',
   },
   debug: true,
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   module: {
     loaders: [
       {
@@ -20,9 +20,9 @@ module.exports = {
         include: path.join(__dirname, 'app'),
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015','stage-2']
-        }
-      }
-    ]
-  }
+          presets: ['react', 'es2015', 'stage-2'],
+        },
+      },
+    ],
+  },
 };
