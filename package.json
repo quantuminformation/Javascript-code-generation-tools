@@ -2,7 +2,6 @@
   "name": "javascript-code-generation-tools",
   "version": "0.4.0",
   "description": "Generates code from json",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch --watch-polling"
@@ -37,6 +36,9 @@
   },
   "system": {
     "transpiler": "babel",
-    "main": "app/app.jsx"
+    "main": "app.jsx",
+    "directories": {
+      "lib": "app"
+    }
   }
 }

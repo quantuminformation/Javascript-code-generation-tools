@@ -1,8 +1,8 @@
-import types from '../actions/actionTypes.js';
-import EmberDataGenerator from '../generators/emberData.js';
-import TypeScriptGenerator from '../generators/typescript';
-import ES6Generator from '../generators/ES6';
-import BootstrapGenerator from '../generators/bootstrap';
+import types from '../actions/actionTypes.js'
+import EmberDataGenerator from '../generators/emberData.js'
+import TypeScriptGenerator from '../generators/typescript'
+import ES6Generator from '../generators/ES6'
+import BootstrapGenerator from '../generators/bootstrap'
 
 
 /**
@@ -30,7 +30,7 @@ function generateCode(json) {
   });
 }
 
-module.exports = function (state = '', action) {
+export default function (state = '', action) {
   switch (action.type) {
     case types.GENERATE_SOURCE:
       return generateCode(action.inputString);
