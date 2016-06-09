@@ -6,7 +6,7 @@ import actionTypes from './actions/actionTypes';
 
 
 const {createStore}= Redux;
-const store = createStore(mainReducer);
+const store = createStore(mainReducer); 
 console.log(store.getState());
 
 var App = React.createClass({
