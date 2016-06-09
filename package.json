@@ -37,6 +37,6 @@
   },
   "system": {
     "transpiler": "babel",
-    "main": "app/main.jsx"
+    "main": "app/app.jsx"
   }
 }
