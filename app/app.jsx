@@ -10,53 +10,57 @@ const {createStore}= Redux;
 const store = createStore(mainReducer);
 console.log(store.getState());
 
-var App = React.createClass({
+export default function () {
 
-  rawMarkup: function () {
-    return {__html: store.outputCode};
-  },
+  var App = React.createClass({
 
-  render: function () {
+    rawMarkup: function () {
+      return {__html: store.outputCode};
+    },
 
-    const setJSON = event => {
-      store.dispatch({
-        type: actionTypes.GENERATE_SOURCE,
-        json: event.target.value
-      })
-    }
+    render: function () {
 
-    return (
-      <div>
-        <h2>Generators</h2>
-        <p>Click one of the following buttons to transform your json to the desired code.</p>
-        <button onClick={this.generateCode} data-type="EMBER_DATA">Ember data
-        </button>
-        <button onClick={this.generateCode} data-type="TYPESCRIPT">TYPESCRIPT
-        </button>
-        <button onClick={this.generateCode} data-type="ES6">ES6
-        </button>
-        <button onClick={this.generateCode} data-type="BOOTSTRAP3">BOOTSTRAP3 Form
-        </button>
-        <div className="flex">
-          <div className="flex1 padding1em">
-            <h2>Input JSON</h2>
+      const setJSON = event => {
+        store.dispatch({
+          type: actionTypes.GENERATE_SOURCE,
+          json: event.target.value
+        })
+      }
+
+      return (
+        <div>
+          <h2>Generators</h2>
+          <p>Click one of the following buttons to transform your json to the desired code.</p>
+          <button onClick={this.generateCode} data-type="EMBER_DATA">Ember data
+          </button>
+          <button onClick={this.generateCode} data-type="TYPESCRIPT">TYPESCRIPT
+          </button>
+          <button onClick={this.generateCode} data-type="ES6">ES6
+          </button>
+          <button onClick={this.generateCode} data-type="BOOTSTRAP3">BOOTSTRAP3 Form
+          </button>
+          <div className="flex">
+            <div className="flex1 padding1em">
+              <h2>Input JSON</h2>
             <textarea id="codeInput" type="textarea" onChange={setJSON}
                       placeholder='Paste JSON code here..'></textarea>
-            <br/><br/>
-          </div>
-          <div className="flex1 padding1em">
-            <h2>Output code</h2>
-            <p id="renderedCode" dangerouslySetInnerHTML={this.rawMarkup()}></p>
+              <br/><br/>
+            </div>
+            <div className="flex1 padding1em">
+              <h2>Output code</h2>
+              <p id="renderedCode" dangerouslySetInnerHTML={this.rawMarkup()}></p>
+            </div>
           </div>
         </div>
-      </div>
-    );
-  }
-});
+      );
+    }
+  });
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('container')
-);
+  ReactDOM.render(
+    <App />,
+    document.getElementById('container')
+  );
 
 
+
+}()
