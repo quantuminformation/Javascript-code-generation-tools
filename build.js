@@ -6,7 +6,7 @@ var promise = stealTools.build({
 }, {
   // the following are the default values, so you don't need
   // to write them.
-  minify: true,
+  minify: false,
   debug: true,
   bundleSteal: true,
 })
