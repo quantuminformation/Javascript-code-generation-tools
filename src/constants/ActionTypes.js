@@ -1,0 +1,1 @@
+export const GENERATE_SOURCE= 'GENERATE_SOURCE'
