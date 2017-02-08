@@ -9,7 +9,7 @@ var EmberDataGenerator = {
    * @param isForChild
    */
   generatePart: function (model, isForChild) {
-    var part = isForChild ? "export default DS.ModelFragment.extend({<br>" : "";
+    let part = isForChild ? "export default DS.ModelFragment.extend({<br>" : "";
     for (var prop in model) {
       if (model.hasOwnProperty(prop)) {
         if (typeof (model[prop]) === 'object') { //send this off to a fragment
@@ -31,10 +31,10 @@ var EmberDataGenerator = {
     part = part.replace(/(.*),/, '$1');
     part += '});<br><br>';
 
-    if (!isForChild) {
-      this.outputCode += part;
-    } else {
+    if (isForChild) {
       this.children.push(part);
+    } else {
+      this.outputCode += part;
     }
   },
 

@@ -1,12 +1,38 @@
 import React from 'react'
-import FromJsonGenerator from './features/codeGeneration/FromJsonGenerator'
+import CodeControls from './features/codeControls/CodeControls'
+import SourceInput from './features/sourceInput/SourceInput'
+import RenderedCode from './features/RenderedCode'
 import './styles/App.css'
+import SmartTerminal from 'smart-terminal'
 
 
-const App = () => (
-  <div>
-    <FromJsonGenerator />
+import "prismjs"
+import "prismjs/components/prism-typescript"
+import "prismjs/components/prism-bash"
+import "prismjs/components/prism-jsx"
+import "prismjs/themes/prism-tomorrow.css"
+
+
+
+import 'normalize.css';
+import './styles/index.css';
+
+
+
+export default () => (
+  <div className="padding1em">
+    <CodeControls />
+    <div className="flex">
+      <SourceInput />
+      <RenderedCode />
+    </div>
   </div>
 )
 
-export default App
+//ok so this isn't very "React'y" but I don't have any issue adding vanilla comps to it
+var smartTerminal = new SmartTerminal(null, null)
+smartTerminal.show()
+
+document.body.addEventListener(SmartTerminal.EVENTS.APPEND_MESSAGE, function (event) {
+  smartTerminal.appendMessage(event.detail)
+})

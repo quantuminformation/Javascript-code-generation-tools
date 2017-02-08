@@ -1,15 +1,23 @@
 {
   "name": "code-generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
+  "homepage": "http://quantuminformation.github.io/Javascript-code-generation-tools/",
   "devDependencies": {
-    "react-redux": "^4.4.5",
-    "react-scripts": "0.6.1",
-    "redux": "^3.6.0"
+    "babel-jest": "^18.0.0",
+    "babel-polyfill": "^6.22.0",
+    "jest-cli": "^18.1.0",
+    "prismjs": "^1.6.0",
+    "react-redux": "^5.0.2",
+    "react-scripts": "0.8.5",
+    "redux": "^3.6.0",
+    "smart-terminal": "^0.1.2"
   },
   "dependencies": {
+    "normalize.css": "^5.0.0",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-radio-group": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

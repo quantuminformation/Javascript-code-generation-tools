@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
-import generateCode from './generateCode'
+import jsonCodeTools from './jsonCodeTools'
 
 const rootReducer = combineReducers({
-  generateCode
+  jsonCodeTools
 })
 
 export default rootReducer

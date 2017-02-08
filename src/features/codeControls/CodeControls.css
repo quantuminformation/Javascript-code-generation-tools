@@ -1,0 +1,13 @@
+.codeControls label {
+  margin-right: 1em;
+}
+
+.codeControls input[type=radio] {
+  margin-right: 0.4em;
+}
+
+#copy-json{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

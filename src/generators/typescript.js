@@ -13,10 +13,10 @@ var TypeScriptGenerator = {
    * @param isForChild
    */
   generatePart: function (model, isForChild, classname = "Foo") {
-    var part = isForChild ? "export class " + classname + ' {<br>' : "";
+    let part = isForChild ? "export class " + classname + ' {<br>' : "";
     //used to stub out the constructor
-    var constructorPartParm1 = "object";//used in the constructor
-    var constructorPart = Common.indentation + 'constructor (' + constructorPartParm1 + ') {<br>';
+    let constructorPartParm1 = "object";//used in the constructor
+    let constructorPart = Common.indentation + 'constructor (' + constructorPartParm1 + ') {<br>';
 
     for (var prop in model) {
       if (model.hasOwnProperty(prop)) {
@@ -46,10 +46,10 @@ var TypeScriptGenerator = {
     part = part.replace(/(.*),/, '$1');
     part += constructorPart + '}<br>';
 
-    if (!isForChild) {
-      this.outputCode += part;
-    } else {
+    if (isForChild) {
       this.children.push(part);
+    } else {
+      this.outputCode += part;
     }
   },
 
