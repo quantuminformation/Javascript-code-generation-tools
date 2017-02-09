@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "postinstall": "npm install spawn-sync && nvm install 6.9.5",
+    "postinstall": "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash && npm install spawn-sync && nvm install 6.9.5",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
