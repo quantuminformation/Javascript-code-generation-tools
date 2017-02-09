@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "postinstall": "nvm install 6.9.5",
+    "postinstall": "npm install spawn-sync && nvm install 6.9.5",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
