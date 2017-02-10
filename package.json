@@ -6,8 +6,10 @@
   "devDependencies": {
     "babel-jest": "^18.0.0",
     "babel-polyfill": "^6.22.0",
+    "enzyme": "^2.7.1",
     "jest-cli": "^18.1.0",
     "prismjs": "^1.6.0",
+    "react-addons-test-utils": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-scripts": "0.8.5",
     "redux": "^3.6.0",
@@ -21,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "postinstall": "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash && npm install spawn-sync && nvm install 6.9.5",
+    "postinstall": "",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
