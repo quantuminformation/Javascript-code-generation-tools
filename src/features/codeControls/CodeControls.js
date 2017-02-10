@@ -6,11 +6,8 @@ import {RadioGroup, Radio} from 'react-radio-group'
 import '../codeControls/CodeControls.css'
 import {copyTextToClipboard} from '../../util/clipboard'
 
-let CodeControls = ({dispatch, options}) => {
+export let CodeControls = (props) => {
 
-  function handleChange(newValue) {
-    dispatch(updateCodeGenerationOptions({outputCodeType: newValue}, document.querySelector('#codeInput').value))
-  }
 
   let types = [
     codeTypes.ES6,
@@ -25,15 +22,16 @@ let CodeControls = ({dispatch, options}) => {
       <p>Click one of the following buttons to transform your json to the desired code.</p>
 
 
-      <RadioGroup name="fruit" selectedValue={options.outputCodeType} onChange={handleChange} >
-        {types.map((item,index)=><label key={index}><Radio value={item}/>{item}</label>)}
+      <RadioGroup name="fruit" selectedValue={props.options.outputCodeType} onChange={props.handleChange}>
+        {types.map((item, index) => <label key={index}><Radio value={item}/>{item}</label>)}
       </RadioGroup>
+
       <button id="copy-json" onClick={handleClick}>Copy sample JSON to clipboard</button>
     </section>
   )
-  function handleClick(){
-   copyTextToClipboard(
-     `
+  function handleClick() {
+    copyTextToClipboard(
+      `
       {
         "shouldBeNumber1": "1",
         "shouldBeString1": ".1",
@@ -45,14 +43,22 @@ let CodeControls = ({dispatch, options}) => {
         } 
       }
       `
-   )
+    )
   }
 }
 
-const mapStateToProps = ({jsonCodeTools:options}) => {
+const mapStateToProps = (state) => {
   return {
-    options: options
+    options: state.jsonCodeTools.options
   }
 }
 
-export default connect(mapStateToProps)(CodeControls)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleChange: (newValue) => {
+      dispatch(updateCodeGenerationOptions({outputCodeType: newValue}))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CodeControls)

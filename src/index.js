@@ -15,3 +15,5 @@ ReactDOM.render(
   ,
   document.getElementById('root')
 );
+
+import './vanillajs'

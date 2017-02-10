@@ -1,4 +1,4 @@
 import * as types from '../constants/ActionTypes'
 
-export const updateSource = (sourceJSON) => ({type: types.UPDATE_SOURCE, sourceJSON})
+export const updateSourceCode = (sourceCode) => ({type: types.UPDATE_SOURCE, sourceCode})
 export const updateCodeGenerationOptions = (options) => ({type: types.UPDATE_CODE_GENERATION_OPTIONS, options})

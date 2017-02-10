@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {updateSource} from '../../actions'
+import {updateSourceCode} from '../../actions'
 import SmartTerminal from 'smart-terminal'
 
 
-let SourceInput = ({dispatch}) => {
+let Editor = (props) => {
 
   const checkSyntax = (evt)=> {
     try {
@@ -17,7 +17,7 @@ let SourceInput = ({dispatch}) => {
       document.body.dispatchEvent(event)
       return
     }
-    dispatch(updateSource(evt.target.value))
+    props.dispatch(updateSourceCode(evt.target.value))
   }
   var style = {
    marginRight:'1em'
@@ -32,5 +32,5 @@ let SourceInput = ({dispatch}) => {
     </section>
   )
 }
-SourceInput = connect()(SourceInput)
-export default SourceInput
+Editor = connect()(Editor)
+export default Editor

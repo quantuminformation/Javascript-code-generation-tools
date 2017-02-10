@@ -37,19 +37,19 @@ function generateCode(inputCode, options) {
 export default function (state = initialState, action) {
   switch (action.type) {
     case UPDATE_CODE_GENERATION_OPTIONS:
-      if (!state.sourceJSON) {
+      if (!state.sourceCode) {
         return state
       }
       return {
         ...state,
         options: action.options,
-        outputCodeFromJSON: generateCode(state.sourceJSON, action.options)
+        outputCodeFromJSON: generateCode(state.sourceCode, action.options)
       }
     case UPDATE_SOURCE:
       return {
         ...state,
         sourceJSON: action.sourceJSON,
-        outputCodeFromJSON: generateCode(action.sourceJSON, state.options)
+        outputCodeFromJSON: generateCode(action.sourceCode, state.options)
       }
     default: {
       return state
