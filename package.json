@@ -19,7 +19,8 @@
     "normalize.css": "^8.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-radio-group": "^3.0.1"
+    "react-radio-group": "^3.0.1",
+    "redux-persist": "^5.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
