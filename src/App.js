@@ -5,15 +5,6 @@ import RenderedCode from './features/RenderedCode'
 import './styles/App.css'
 import SmartTerminal from 'smart-terminal'
 
-
-import "prismjs"
-import "prismjs/components/prism-typescript"
-import "prismjs/components/prism-bash"
-import "prismjs/components/prism-jsx"
-import "prismjs/themes/prism-tomorrow.css"
-
-
-
 import 'normalize.css';
 import './styles/index.css';
 

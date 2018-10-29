@@ -4,14 +4,12 @@
   "private": true,
   "homepage": "http://quantuminformation.github.io/Javascript-code-generation-tools/",
   "devDependencies": {
-    "babel-jest": "^23.4.2",
     "babel-polyfill": "^6.22.0",
     "enzyme": "^3.4.4",
+    "jest": "^23.6.0",
     "jest-cli": "^23.5.0",
-    "prismjs": "^1.6.0",
-    "react-addons-test-utils": "^15.4.2",
     "react-redux": "^5.0.2",
-    "react-scripts": "1.1.4",
+    "react-scripts": "2.0.5",
     "redux": "^4.0.0",
     "smart-terminal": "^0.2.3"
   },
@@ -20,7 +18,8 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-radio-group": "^3.0.1",
-    "redux-persist": "^5.10.0"
+    "redux-persist": "^5.10.0",
+    "vanilla-typescript": "^0.4.10"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,5 +27,25 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 40,
+        "functions": 40,
+        "lines": 40,
+        "statements": 40
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!node_modules/"
+    ]
   }
 }
