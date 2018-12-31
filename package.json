@@ -4,10 +4,10 @@
   "private": true,
   "homepage": "http://quantuminformation.github.io/Javascript-code-generation-tools/",
   "devDependencies": {
-    "babel-polyfill": "^6.22.0",
     "enzyme": "^3.4.4",
     "jest": "^23.6.0",
     "jest-cli": "^23.5.0",
+    "prettier": "1.14.3",
     "react-redux": "^5.0.2",
     "react-scripts": "2.0.5",
     "redux": "^4.0.0",
@@ -45,7 +45,8 @@
     },
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
-      "!node_modules/"
+      "!node_modules/",
+      "!src/**/.*Connected/*"
     ]
   }
 }

@@ -4,7 +4,7 @@ import {updateSource} from '../../actions'
 import SmartTerminal from 'smart-terminal'
 
 
-export const SourceInput = (props) => {
+let SourceInput = ({dispatch}) => {
 
   const checkSyntax = (evt)=> {
     try {
@@ -32,3 +32,9 @@ export const SourceInput = (props) => {
     </section>
   )
 }
+
+const mapDispatchToProps = ()=>{
+
+}
+
+export const SourceInputConnected = connect()(SourceInput)

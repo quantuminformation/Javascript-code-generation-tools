@@ -6,7 +6,7 @@ import { RadioGroup, Radio } from 'react-radio-group';
 import '../codeControls/CodeControls.css';
 import { copyTextToClipboard } from '../../util/clipboard';
 
-export const CodeControls = ({ dispatch, options }) => {
+export const CodeControlsBase = ({ dispatch, options }) => {
   function handleChange(newValue) {
     dispatch(updateCodeGenerationOptions({ outputCodeType: newValue }, document.querySelector('#codeInput').value));
   }
@@ -49,3 +49,10 @@ export const CodeControls = ({ dispatch, options }) => {
   }
 };
 
+const mapStateToProps = ({ jsonCodeTools: options }) => {
+  return {
+    options: options
+  };
+};
+
+export const CodeControlsConnected = connect(mapStateToProps)(CodeControlsBase);

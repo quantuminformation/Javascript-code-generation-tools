@@ -1,7 +1,6 @@
 import  React from 'react'
-import {connect} from 'react-redux'
 
-let RenderedCode = (props) => {
+export const RenderedCode = (props) => {
 
   function rawMarkup() {
     return {__html: props.outputCodeFromJSON};
@@ -14,11 +13,3 @@ let RenderedCode = (props) => {
     </section>
   )
 }
-
-const mapStateToProps = ({jsonCodeTools}) => {
-  return {
-    outputCodeFromJSON: jsonCodeTools.outputCodeFromJSON
-  }
-}
-
-export default connect(mapStateToProps)(RenderedCode)
